@@ -1,0 +1,23 @@
+{
+
+"framerate": [60,60,60,60,60],
+"exposure": [3000,3000,15000, 3000, 3000],
+"num_workers":4,
+"video_every":2,
+"video_length":2,
+"image_every":1,
+"hybrid_cams":[0,1,1,0,0], 
+
+"buffer_size":2147483647,
+"buffer_queue_size":4,
+"buffer_policy":"XI_BP_SAFE",
+"saving_queues":1,  
+
+"img_heigth": 2048,
+"img_width":2048,
+"saving_folder": "argos_out",
+
+"scale": 0.2,
+"stat_cam":"cam1"               
+   
+}

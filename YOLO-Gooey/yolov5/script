@@ -1,0 +1,1 @@
+python train.py --epochs 600 --batch-size 16 --imgsz 1600 --data "output_train/fish_shell_annotations/data/dataset.yaml"

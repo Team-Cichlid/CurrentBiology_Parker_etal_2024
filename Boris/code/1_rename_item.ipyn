@@ -1,0 +1,49 @@
+import os
+import csv
+
+run_name='202211'
+
+# Function to rename the subject values
+def rename_subject(subject):
+    if subject == 'baby1':
+        return 'baby7'
+    elif subject == 'baby2':
+        return 'baby8'
+    elif subject == 'baby3':
+        return 'baby9'
+    elif subject == 'baby4':
+        return 'baby10'
+    elif subject == 'baby5':
+        return 'baby11'
+    elif subject == 'baby6':
+        return 'baby12'
+    elif subject == 'mother':
+        return 'mother2'
+    else:
+        return subject
+
+# Directory containing the CSV files
+directory = '../data'
+
+# Iterate over all CSV files in the directory
+for filename in os.listdir(directory):
+    if filename.startswith(run_name):
+        filepath = os.path.join(directory, filename)
+        
+        # Read the CSV file
+        with open(filepath, 'r') as file:
+            reader = csv.DictReader(file)
+            data = list(reader)
+        
+        # Modify the 'Subject' column values
+        for row in data:
+            row['Subject'] = rename_subject(row['Subject'])
+        
+        # Write the modified data to a new CSV file
+        new_filepath = os.path.join(directory, 'renamed_'f'{filename}')
+        with open(new_filepath, 'w', newline='') as file:
+            writer = csv.DictWriter(file, fieldnames=reader.fieldnames)
+            writer.writeheader()
+            writer.writerows(data)
+            
+        print(f'Renamed file: {new_filepath}')
